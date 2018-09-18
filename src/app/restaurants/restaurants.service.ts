@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { MenuItem } from '../restaurant-details/menu-item/menu-item.model';
 
 @Injectable()
 export class RestaurantsService {
@@ -20,6 +21,18 @@ export class RestaurantsService {
     restaurantById(id : string) : Observable<Restaurant> {
         return this.http.get(`${MEAT_API}/restaurants/${id}`)
             .map(response => response.json())
+            .catch(ErrorHandler.errorHandler);
+    }
+
+    reviewsOfRestaurant(id : string) : Observable<any> {
+        return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`)
+            .map(response => response.json())
+            .catch(ErrorHandler.errorHandler);
+    }
+
+    menuOfRestaurant(id : string) : Observable<MenuItem[]> {
+        return this.http.get(`${MEAT_API}/restaurants/${id}/menu`)
+            .map(respose => respose.json())
             .catch(ErrorHandler.errorHandler);
     }
 }

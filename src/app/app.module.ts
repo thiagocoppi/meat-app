@@ -1,3 +1,5 @@
+import { ShoppingCartService } from './restaurant-details/shopping-cart/shopping-cart.service';
+import { ReviewsComponent } from './restaurant-details/reviews/reviews.component';
 import { MenuItemComponent } from './restaurant-details/menu-item/menu-item.component';
 import { ShoppingCartComponent } from './restaurant-details/shopping-cart/shopping-cart.component';
 import { MenuComponent } from './restaurant-details/menu/menu.component';
@@ -29,7 +31,8 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
     RestaurantDetailsComponent,
     MenuComponent,
     ShoppingCartComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    RestaurantsService
+    RestaurantsService,
+    ShoppingCartService
 
   ],
   bootstrap: [AppComponent]
