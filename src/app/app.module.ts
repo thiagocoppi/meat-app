@@ -1,3 +1,4 @@
+import { RadioComponent } from './shared/radio/radio.component';
 import { ShoppingCartService } from './restaurant-details/shopping-cart/shopping-cart.service';
 import { ReviewsComponent } from './restaurant-details/reviews/reviews.component';
 import { MenuItemComponent } from './restaurant-details/menu-item/menu-item.component';
@@ -38,7 +39,9 @@ import { InputComponent } from './shared/input/input.component';
     MenuItemComponent,
     ReviewsComponent,
     OrderComponent,
-    InputComponent
+    InputComponent,
+    RadioComponent
+    
   ],
   imports: [
     BrowserModule,
