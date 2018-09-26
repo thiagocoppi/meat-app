@@ -1,3 +1,5 @@
+import { CartItem } from './../restaurant-details/shopping-cart/cart-item.model';
+import { OrderService } from './order.service';
 import { RadioOptions } from './../shared/radio/radio-options.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +15,24 @@ export class OrderComponent implements OnInit {
     {label: 'Vale Refeição', value : 'VR'}
   ];
 
-  constructor() { }
+  constructor(private orderService : OrderService) { }
+
+  cartItens() {
+    return this.orderService.cartItems();
+  }
+
+  increaseQtd(item : CartItem) {
+    this.orderService.increaseQtd(item);
+  }
+
+  decreaseQtd(item : CartItem) {
+    this.orderService.decreaseQtd(item);
+  }
+
+  remove(item : CartItem){
+    this.orderService.removeItem(item);
+  }
+
 
   ngOnInit() {
   }

@@ -1,3 +1,4 @@
+import { OrderService } from './order/order.service';
 import { RadioComponent } from './shared/radio/radio.component';
 import { ShoppingCartService } from './restaurant-details/shopping-cart/shopping-cart.service';
 import { ReviewsComponent } from './restaurant-details/reviews/reviews.component';
@@ -22,6 +23,8 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 import { OrderComponent } from './order/order.component';
 import { InputComponent } from './shared/input/input.component';
+import { OrderItemsComponent } from './order/order-items/order-items.component';
+
 
 
 
@@ -40,7 +43,8 @@ import { InputComponent } from './shared/input/input.component';
     ReviewsComponent,
     OrderComponent,
     InputComponent,
-    RadioComponent
+    RadioComponent,
+    OrderItemsComponent
     
   ],
   imports: [
@@ -52,6 +56,7 @@ import { InputComponent } from './shared/input/input.component';
   providers: [
     RestaurantsService,
     ShoppingCartService,
+    OrderService,
     {provide: LOCALE_ID, useValue: 'pt-BR'}
 
   ],
