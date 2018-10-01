@@ -4,10 +4,8 @@
 
 <section class="content">
   <section class="invoice">
-        {{form.valid}}
-        {{form.value | json}}
-
         <form #form="ngForm" novalidate>
+          {{form.value | json}}
           <div class="row">
             <div class="col-xs-12">
               <h2 class="page-header">
@@ -47,9 +45,9 @@
             </div>
             
             <mt-order-items [items]="cartItens()"
-             (increaseQtd)="emitIncreaseQtd($event)"
-             (decreaseQtd)="emitDecreaseQtd($event)"
-             (removeItem)="emitRemoveItem($event)"></mt-order-items>
+             (increaseQtd)="increaseQtd($event)"
+             (decreaseQtd)="decreaseQtd($event)"
+             (removeItem)="remove($event)"></mt-order-items>
 
             <!-- /.col -->
           </div>
@@ -59,7 +57,7 @@
             <!-- accepted payments column -->
             <div class="col-sm-6 col-xs-12">
               <p class="lead">Formas de Pagamento:</p>
-              <mt-radio [options]="paymentOptions" name="formasPagamentos" ngModel></mt-radio>
+              <mt-radio [options]="paymentOptions" name="formasPagamentos" ngModel required></mt-radio>
 
             </div>
 
@@ -67,23 +65,9 @@
             <!-- /.col -->
             <div class="col-sm-6 col-xs-12">
               <p class="lead">Frete e Total:</p>
-
-              <div class="table-responsive">
-                <table class="table">
-                  <tbody><tr>
-                    <th style="width:50%">Itens:</th>
-                    <td class="text-right">R$ 20,00</td>
-                  </tr>
-                  <tr>
-                    <th>Frete:</th>
-                    <td class="text-right">R$ 8,00</td>
-                  </tr>
-                  <tr>
-                    <th>Total:</th>
-                    <td class="text-right">R$ 28,00</td>
-                  </tr>
-                </tbody></table>
-              </div>
+              <mt-delivery-costs [delivery]="deliveryPrice"
+                                 [itensValue]="itensValue()"></mt-delivery-costs>
+              
             </div>
             <!-- /.col -->
           </div>
@@ -92,7 +76,10 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <button [disabled]="form.invalid" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Concluir Pedido</button>            
+            <button [disabled]="form.invalid || cartItens().length === 0" 
+                    class="btn btn-success pull-right"
+                    (click)="checkOrder(form.value)">
+            <i class="fa fa-credit-card"></i> Concluir Pedido</button>            
           </div>
         </div>
 

@@ -1,10 +1,10 @@
-<div *ngIf="!items" class="col-xs-12">
+<div *ngIf="items.length === 0" class="col-xs-12">
   <p class="text-center">
     Você não tem itens adicionados, por favor adicione e retorne para os <a [routerLink]="['/restaurants']"> restaurantes!</a>!
   </p>
 </div>
 
-<div *ngIf="items" class="col-xs-12 table-responsive">
+<div *ngIf="items.length !== 0" class="col-xs-12 table-responsive">
 
   <table class="table table-striped">
     <thead>
@@ -19,9 +19,9 @@
     <tbody>
     <tr *ngFor="let item of items">
       <td class="text-center">
-        <a (click)="emitIncreaseQtd(item)" class="btn btn-sm"><i class="fa fa-minus"></i></a>
+        <a (click)="emitDecreaseQtd(item)" class="btn btn-sm"><i class="fa fa-minus"></i></a>
         {{item.quantity}}
-        <a (click)="emitDecreaseQtd(item)"class="btn btn-sm"><i class="fa fa-plus"></i></a>
+        <a (click)="emitIncreaseQtd(item)"class="btn btn-sm"><i class="fa fa-plus"></i></a>
       </td>
       <td>{{item.menuItem.name}}</td>
 

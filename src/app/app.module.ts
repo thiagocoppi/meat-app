@@ -24,6 +24,7 @@ import { RestaurantDetailsComponent } from './restaurant-details/restaurant-deta
 import { OrderComponent } from './order/order.component';
 import { InputComponent } from './shared/input/input.component';
 import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 
 
 
@@ -44,7 +45,8 @@ import { OrderItemsComponent } from './order/order-items/order-items.component';
     OrderComponent,
     InputComponent,
     RadioComponent,
-    OrderItemsComponent
+    OrderItemsComponent,
+    DeliveryCostsComponent
     
   ],
   imports: [
