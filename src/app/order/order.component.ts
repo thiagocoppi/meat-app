@@ -4,12 +4,15 @@ import { RadioOptions } from './../shared/radio/radio-options.model';
 import { Component, OnInit } from '@angular/core';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'mt-order',
   templateUrl: './order.component.html'
 })
 export class OrderComponent implements OnInit {
+
+  orderForm: FormGroup;
 
   paymentOptions : RadioOptions[] = [
     {label: 'Cartão', value : 'CAR'},
@@ -24,7 +27,9 @@ export class OrderComponent implements OnInit {
   }
 
 
-  constructor(private orderService : OrderService, private router: Router) { }
+  constructor(private orderService : OrderService, 
+              private router: Router,
+              private formBuilder: FormBuilder) { }
 
   cartItens() {
     return this.orderService.cartItems();
@@ -52,6 +57,15 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.orderForm = this.formBuilder.group({
+      name: this.formBuilder.control(''),
+      email: this.formBuilder.control(''),
+      emailConfirmation: this.formBuilder.control(''),
+      address: this.formBuilder.control(''),
+      number: this.formBuilder.control(''),
+      complemento: this.formBuilder.control(''),
+      formasPagamentos: this.formBuilder.control('')
+    });
   }
 
 }
