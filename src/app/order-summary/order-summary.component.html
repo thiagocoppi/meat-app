@@ -8,7 +8,7 @@
     <p>Seu pedido foi recebido pelo restaurante. Prepare a mesa que a comida está chegando!</p>
     <p><b>Avalie</b> sua experiência:</p>    
     <p><mt-rating (rated)="rated = true"></mt-rating></p>
-    <p [hidden]="!hated"> Obrigado pela compra !</p>
+    <p [hidden]="!rated"> Obrigado pela compra !</p>
   </div>
 
 </section>

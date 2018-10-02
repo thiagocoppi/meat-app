@@ -20,10 +20,9 @@ export class RatingComponent implements OnInit {
   }
 
   setRate(rateValue : number) {
-    console.log(rateValue);
     this.rate = rateValue;
     this.previousRate = undefined;    
-    console.log(this.rated.emit(this.rate));
+    this.rated.emit(this.rate);
   }
 
   setTemporaryValue(rateValue: number) {

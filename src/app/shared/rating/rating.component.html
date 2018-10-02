@@ -1,6 +1,6 @@
 <i *ngFor="let rateValue of rates" class="fa"
   [class.fa-star]="rateValue <= rate"
   [class.fa-star-o]="rateValue > rate"
-  (click)="setRate($event)"
+  (click)="setRate(rateValue)"
   (mouseenter)="setTemporaryValue(rateValue)"
   (mouseleave)="clearTemporaryValue()"></i>
