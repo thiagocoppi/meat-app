@@ -14,20 +14,26 @@
           </div>               
           
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-9">
               <p class="lead">Seus dados:</p>
             </div>
+
+            <div *ngIf="orderForm.hasError('emailsNotMatch')" class="col-xs-12 col-sm-3">
+              <span class="help-block pull-right has-error-block"><i class="fa fa-remove"></i> Os e-mails não estão iguais!</span>
+            </div>
+
             <div class="col-sm-6 col-xs-12">
               <mt-input-container mensagemErro="Campo obrigatório" label="Nome">
                 <input class="form-control" formControlName="name" placeholder="Nome">
               </mt-input-container>
             </div>
+            
             <div class="col-sm-2 col-xs-12">
               <mt-input-container mensagemErro="Email inválido" label="Email">
                 <input class="form-control" formControlName="email" placeholder="Email">
               </mt-input-container>
             </div>
-            <div class="col-sm-2 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
               <mt-input-container mensagemErro="Email inválido" label="Confirme seu Email">
                 <input class="form-control" formControlName="emailConfirmation" placeholder="Repita seu email">
               </mt-input-container>
