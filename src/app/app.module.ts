@@ -1,4 +1,3 @@
-import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ReviewsComponent } from './restaurant-details/reviews/reviews.component';
 import { MenuItemComponent } from './restaurant-details/menu-item/menu-item.component';
@@ -8,7 +7,7 @@ import { ROUTES } from './app.route';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID} from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -39,10 +38,9 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
   ],
   imports: [
     BrowserModule,
-    SharedModule,
+    SharedModule.forRoot(),
     HttpModule,
-    CoreModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'}
